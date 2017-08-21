@@ -1,0 +1,8 @@
+{
+  "name": "SMART SL",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "slm": "^1.0.0"
+  }
+}
