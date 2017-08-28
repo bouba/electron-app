@@ -1,8 +1,13 @@
 {
-  "name": "SMART SL",
+  "name": "SMARTSL",
   "version": "0.1.0",
-  "main": "main.js",
+  "main": "app.js",
   "dependencies": {
-    "slm": "^1.0.0"
+    "slm": "^1.0.0",
+    "lokijs": "^1.5.0",
+    "electron-pug": "^1.5.1"
+  },
+  "scripts": {
+    "start": "electron ."
   }
 }
