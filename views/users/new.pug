@@ -1,7 +1,13 @@
 extends ../layouts/main.pug
 
 block content
-  p New form
-  h1 hello
+  h1 New user
+  form
+    div.form-group
+      label(for='user_login') User login:
+      input#login.form-control(type='text',placeholder='User Login',name='user_login')
+    div.form-group
+      button.btn.btn-primary(type='submit') Create user
   block scripts
-    script(src='main.js')
+    script(src='../../main.js')
+    script(src='../../src/users.js')

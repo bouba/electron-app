@@ -11,6 +11,12 @@ var menu = Menu.buildFromTemplate([
           click: function() {
             ipc.send('show-new-user')
           }
+        },
+        {
+          label: 'Users',
+          click: function() {
+            ipc.send('index-users')
+          }
         }
       ]
     }

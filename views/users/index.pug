@@ -1,2 +1,15 @@
-mixin user-list
-  List of users
+extends ../layouts/main.pug
+
+block content
+  script.
+    var electron = require('electron');
+    var currentWindow = electron.remote.getCurrentWindow();
+    
+  div#list-users
+    h1 List of users
+    ul
+      each user in users
+        li= user.login
+  block scripts
+    script(src='../../main.js')
+    script(src='../../src/users.js')

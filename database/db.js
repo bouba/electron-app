@@ -1,4 +1,3 @@
-
 const loki = require('lokijs')
 
 var db = new loki('smartsl2.db', {
@@ -23,21 +22,18 @@ function addUsers() {
   users.insert({name: 'test4', age: 32})
 }
 
+function getUsers() {
+  console.log('getting users')
+  var users = db.getCollection('users').find({})
+  return users
+}
+
 // example method with any bootstrap logic to run after database initialized
 function runProgramLogic() {
   var entryCount = db.getCollection("users").count();
   console.log("number of users in database : " + entryCount);
 }
 
-var test  = 'toto'
-
-function showResult() {
-  var users = db.getCollection('users')
-  var result = users.find({age: {$lte: 35}})
-  return result[0].name
-}
-
 module.exports.db = {
-  content: showResult,
-  test: test
+  instance: db
 }

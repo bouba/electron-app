@@ -4,12 +4,9 @@ const path = require('path')
 const url  = require('url')
 const ldb = require(__dirname+'/database/db.js')
 
-const locals = { tdb: ldb.db, te: 'tota'}
-//DB
-// View
-const pug = require('electron-pug')({pretty: true},locals)
-console.log('test')
-console.log(ldb);
+const locals = {}
+//Renderer html template
+const pug = require('electron-pug')({pretty: true}, locals)
 
 let win // Global window object reference so it is not gabaged collected
 
@@ -20,8 +17,14 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.pug`)
   win.webContents.openDevTools()
 
+  //User management
   ipcMain.on('show-new-user', function() {
     win.loadURL(`file://${__dirname}/views/users/new.pug`)
+  })
+
+  ipcMain.on('index-users', function() {
+    locals.users = ldb.db.instance.getCollection('users').find({login: { $ne: undefined }})
+    win.loadURL(`file://${__dirname}/views/users/index.pug`)
   })
 
   win.on('closed', () => {
